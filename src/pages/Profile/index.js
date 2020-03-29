@@ -16,7 +16,7 @@ export default function Profile() {
   const history = useHistory()
 
   useEffect(() => {
-    api.get('/profiles', {
+    api.get('/profile', {
       headers: {
         Authorization: ongId
       }
@@ -41,7 +41,7 @@ export default function Profile() {
 
   function handleLogout () {
     localStorage.clear()
-    history.replaceState('/')
+    history.replace('/')
   }
 
   return (

@@ -10,16 +10,16 @@ import heroesImg from '../../assets/heroes.png'
 
 export default function Logon() {
   const [id, setId] = useState('')
-  const histoty = useHistory()
+  const history = useHistory()
 
   async function handleLogin (event) {
     event.preventDefault()
 
     try {
-      const res = api.post('sessions', { id })
+      const res = await api.post('session', { id })
       localStorage.setItem('ongId', id)
-      localStorage.setItem('ongName', (await res).data.name)
-      history.pushState('/profile')
+      localStorage.setItem('ongName', res.data.name)
+      history.push('/profile')
     } catch (error) {
       alert('Falha no login, tente novamente')
     }
